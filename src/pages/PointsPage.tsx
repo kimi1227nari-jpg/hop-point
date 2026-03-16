@@ -36,12 +36,20 @@ const PointsPage = () => {
       </Card>
 
       {/* Redeem CTA */}
-      <a href="https://example.com/redeem" target="_blank" rel="noopener noreferrer">
-        <Button className="w-full mb-6 h-12 gap-2" size="lg">
-          <ExternalLink className="h-4 w-4" />
-          ポイントを還元する
-        </Button>
-      </a>
+      <Card className="mb-6 border-primary/20 bg-primary/5">
+        <CardContent className="p-5">
+          <a href="https://hop-kaigo.jp/register/seeker" target="_blank" rel="noopener noreferrer">
+            <Button className="w-full h-12 gap-2 mb-3" size="lg">
+              <ExternalLink className="h-4 w-4" />
+              ポイントを有効化する（会員登録）
+            </Button>
+          </a>
+          <div className="space-y-2 text-xs text-muted-foreground">
+            <p>上記サイトで<strong className="text-foreground">会員登録</strong>後、<strong className="text-foreground">「仕事を開始」</strong>することでポイントが有効化されます。</p>
+            <p>有効化以降は、<strong className="text-foreground">累計勤務時間に応じて1時間＝1ポイント</strong>が自動的に加算されます。</p>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* History */}
       <Card>
