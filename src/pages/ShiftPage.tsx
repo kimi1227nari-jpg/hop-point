@@ -35,6 +35,14 @@ interface ShiftEntry {
 }
 
 const ShiftPage = () => {
+  const [firstLaunchDate] = useState<Date>(() => {
+    const stored = localStorage.getItem("hop_first_launch");
+    if (stored) return new Date(stored);
+    const now = new Date();
+    now.setHours(0, 0, 0, 0);
+    localStorage.setItem("hop_first_launch", now.toISOString());
+    return now;
+  });
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [selectedShift, setSelectedShift] = useState<ShiftType | null>(null);
   const [startTime, setStartTime] = useState("");
