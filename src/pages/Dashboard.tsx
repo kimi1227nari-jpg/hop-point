@@ -163,7 +163,7 @@ const Dashboard = () => {
         </Button>
 
         <a
-          href="https://example.com/redeem"
+          href="https://hop-kaigo.jp/register/seeker"
           target="_blank"
           rel="noopener noreferrer"
           className="block"
