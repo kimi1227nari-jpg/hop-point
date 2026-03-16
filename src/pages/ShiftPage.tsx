@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -35,6 +35,14 @@ interface ShiftEntry {
 }
 
 const ShiftPage = () => {
+  const [firstLaunchDate] = useState<Date>(() => {
+    const stored = localStorage.getItem("hop_first_launch");
+    if (stored) return new Date(stored);
+    const now = new Date();
+    now.setHours(0, 0, 0, 0);
+    localStorage.setItem("hop_first_launch", now.toISOString());
+    return now;
+  });
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [selectedShift, setSelectedShift] = useState<ShiftType | null>(null);
   const [startTime, setStartTime] = useState("");
@@ -99,7 +107,7 @@ const ShiftPage = () => {
             className="pointer-events-auto"
             modifiers={{ booked: shiftDates }}
             modifiersClassNames={{ booked: "bg-primary/20 text-primary font-bold rounded-full" }}
-            disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0))}
+            disabled={(date) => date < firstLaunchDate}
           />
         </CardContent>
       </Card>
