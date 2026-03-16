@@ -107,7 +107,7 @@ const ShiftPage = () => {
             className="pointer-events-auto"
             modifiers={{ booked: shiftDates }}
             modifiersClassNames={{ booked: "bg-primary/20 text-primary font-bold rounded-full" }}
-            disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0))}
+            disabled={(date) => date < firstLaunchDate}
           />
         </CardContent>
       </Card>
